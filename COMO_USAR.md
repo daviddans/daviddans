@@ -226,7 +226,7 @@ counterstrike, dota2, epicgames, playstation, steamdeck, itchdotio.
 | Mail | `dans.villares@gmail.com` | badge del propio perfil de GitHub |
 | LinkedIn | `linkedin.com/in/daviddans` | badge del propio perfil de GitHub |
 | Steam | `steamcommunity.com/id/Daviddans` | API de la comunidad: perfil público, `steamID64 76561198192098301` |
-| Instagram | `instagram.com/daviddans` | ⚠️ **sin poder verificar**: Instagram devuelve la misma página para cualquier usuario y no está en los índices de búsqueda. Es el handle que dio el autor; si fuera otro, cámbialo (ver abajo) |
+| Instagram | `instagram.com/D4v1dd4ns` | handle confirmado por el autor (Instagram no deja verificarlo: devuelve la misma página para cualquier usuario) |
 
 > Cada red aparece **dos veces**: en las badges del README (clicables) y
 > dentro del SVG del nmap (que es una imagen y no se puede pulsar). Si

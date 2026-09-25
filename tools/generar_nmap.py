@@ -43,7 +43,7 @@ USER, HOST, SIGN = "#BB9AF7", "#7AA2F7", "#9ECE6A"
 # (puerto, servicio, destino)
 PUERTOS = [
     ("200/tcp",  "smtp",      "dans.villares@gmail.com"),
-    ("404/tcp",  "instagram", "instagram.com/daviddans"),
+    ("404/tcp",  "instagram", "instagram.com/D4v1dd4ns"),
     ("418/tcp",  "teapot",    "steamcommunity.com/id/Daviddans"),
     ("451/tcp",  "legal",     "linkedin.com/in/daviddans"),
     ("1337/tcp", "github",    "github.com/daviddans"),

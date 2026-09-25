@@ -131,7 +131,7 @@
   <a href="mailto:dans.villares@gmail.com"><img src="https://img.shields.io/badge/-mail-F38BA8?style=flat-square&logo=gmail&logoColor=white" alt="mail"/></a>
   <a href="https://linkedin.com/in/daviddans"><img src="https://img.shields.io/badge/-linkedin-7AA2F7?style=flat-square&logo=linkedin&logoColor=white" alt="linkedin"/></a>
   <a href="https://steamcommunity.com/id/Daviddans"><img src="https://img.shields.io/badge/-steam-1A1B26?style=flat-square&logo=steam&logoColor=white" alt="steam"/></a>
-  <a href="https://instagram.com/daviddans"><img src="https://img.shields.io/badge/-instagram-F5BDE6?style=flat-square&logo=instagram&logoColor=white" alt="instagram"/></a>
+  <a href="https://instagram.com/D4v1dd4ns"><img src="https://img.shields.io/badge/-instagram-F5BDE6?style=flat-square&logo=instagram&logoColor=white" alt="instagram"/></a>
 </p>
 
 <!-- ═══════════════ EOF ═══════════════ -->
