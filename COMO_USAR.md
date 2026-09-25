@@ -40,7 +40,7 @@ perfiles, y sin depender de servicios externos para la decoración.
 | `assets/divider-wave.svg` | **el único divisor** (onda + burbujas, estrecho y a todo el ancho) |
 | `$ tree ~/stack/ -L 2` | stack en strips de iconos uniformes, 13 carpetas |
 | `assets/divider-wave.svg` | el mismo divisor, otra vez |
-| `$ nmap -sV -T4 daviddans` | contacto: `assets/nmap.svg` (13 puertos abiertos = tus cosas) + badges clicables |
+| `$ nmap -sV -T4 daviddans` | contacto: `assets/nmap.svg` (5 puertos inventados = tus 5 redes) + badges clicables |
 | `assets/footer.svg` | pie: `exit 0` + `logout` + `[ERROR] social_life: process not found` |
 
 El hilo narrativo es una sesión de terminal de principio a fin:
@@ -218,17 +218,19 @@ counterstrike, dota2, epicgames, playstation, steamdeck, itchdotio.
 
 ## ✏️ 5 · Qué queda por editar
 
-| Placeholder | Dónde | Qué poner |
+**No queda ningún placeholder.** El contacto está completo y verificado:
+
+| Red | Enlace | Cómo se comprobó |
 |:---|:---|:---|
-| `{{TU_STEAM}}` | `README.md` (badge) **y** `tools/generar_nmap.py` | Tu id de Steam (sale 2 veces en el SVG) |
-| `{{TU_INSTAGRAM}}` | `README.md` (badge) **y** `tools/generar_nmap.py` | Tu @ de Instagram |
+| GitHub | `github.com/daviddans` | — |
+| Mail | `dans.villares@gmail.com` | badge del propio perfil de GitHub |
+| LinkedIn | `linkedin.com/in/daviddans` | badge del propio perfil de GitHub |
+| Steam | `steamcommunity.com/id/Daviddans` | API de la comunidad: perfil público, `steamID64 76561198192098301` |
+| Instagram | `instagram.com/daviddans` | ⚠️ **sin poder verificar**: Instagram devuelve la misma página para cualquier usuario y no está en los índices de búsqueda. Es el handle que dio el autor; si fuera otro, cámbialo (ver abajo) |
 
-Ya rellenados (verificados en tu propio perfil de GitHub): el correo
-`dans.villares@gmail.com` y el LinkedIn `in/daviddans`.
-
-> ⚠️ Cada red está **dos veces**: en las badges del README (que son
-> clicables) y dentro del SVG del nmap (que es una imagen y no se puede
-> pulsar). Cambia los dos sitios y vuelve a lanzar
+> Cada red aparece **dos veces**: en las badges del README (clicables) y
+> dentro del SVG del nmap (que es una imagen y no se puede pulsar). Si
+> cambias alguna, cámbiala en los dos sitios y relanza
 > `python3 tools/generar_nmap.py`.
 
 Ya son tuyos: avatar (github.com/daviddans.png), quote, fastfetch/about_me
@@ -305,7 +307,7 @@ complicados a partir de listas legibles:
 | `tools/generar_header.py` | `assets/header.svg` (prompt + escena + **typing que se borra**) | `PROMPT`, `LINEAS` (texto+color), `DT`/`PAUSA`/`DT_DEL`/`GAP`, `TYPE_FONT` |
 | `tools/svg_typing.py` | motor de tecleo **compartido** por cabecera, panel y nmap | — |
 | `tools/generar_fastfetch.py` | `assets/fastfetch.svg` (panel del hero con logo Arch + pausa) | `FASTFETCH`, `ABOUT`, `CUENTA` (fecha de la cuenta para el `uptime`), `DT_TEXTO`/`DT_PROMPT`, `PAUSA`, geometría |
-| `tools/generar_nmap.py` | `assets/nmap.svg` (el nmap de contacto) | `PUERTOS` (la lista de puertos abiertos), `DT`, `PAUSA`, `TAM`, `LSTEP` |
+| `tools/generar_nmap.py` | `assets/nmap.svg` (el nmap de contacto) | `PUERTOS` (los 5 puertos), `DT`, `PAUSA`, `TAM`, `LSTEP` |
 | `tools/generar_tags.py` | las 29 etiquetas del hero (HTML entre `BEGIN/END TAGS`) | `IDENTIDAD`, `TECH`, `OFFLINE`, `SOFT` |
 | `tools/generar_strips.py` | los 13 `assets/stack-*.svg` | `STRIPS` (qué iconos va en cada carpeta) |
 | `tools/preview.py` | `/tmp/opencode/preview/index.html` (assets inlineados) | — |

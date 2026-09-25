@@ -2,7 +2,7 @@
   DAVIDDANS · perfil readme — "una sesión de terminal"
   whoami → fastfetch → tree → nmap -sV daviddans → exit 0
   🎨 paleta "SynthNight Mocha" · 🌐 multi-plataforma · guía: COMO_USAR.md
-  ✏️ pendientes: {{TU_STEAM}} y {{TU_INSTAGRAM}} del contacto (COMO_USAR §5)
+  ✏️ todo rellenado: mail, linkedin, steam e instagram en el contacto
  ══════════════════════════════════════════════════════════════════ -->
 
 <!-- ══ $ whoami ══ la cabecera (header.svg) lleva el prompt, la escena
@@ -117,21 +117,21 @@
 <p align="center"><img src="./assets/divider-wave.svg" width="100%" alt="···"/></p>
 
 <!-- ═══════════════ $ nmap -sV daviddans ═══════════════
-     El contacto es un escaneo de puertos: cada puerto abierto es una de
-     tus cosas, con el puerto real de cada servicio (8006 Proxmox, 9100 la
-     impresora, 51820 WireGuard…). Se genera con tools/generar_nmap.py. -->
+     El contacto es un escaneo: 5 puertos "abiertos", uno por red social.
+     Los puertos son inventados a propósito (200, 404, 418, 451, 1337) y el
+     chiste está en la columna SERVICE. Se genera con tools/generar_nmap.py. -->
 `daviddans@arch:~$ nmap -sV -T4 daviddans`
 
 <p align="center">
-  <img src="./assets/nmap.svg" width="696" height="580" alt="nmap: 13 puertos abiertos — github, mail, linkedin, steam, instagram, homelab, proxmox y la impresora 3D"/>
+  <img src="./assets/nmap.svg" width="670" height="428" alt="nmap: 5 puertos abiertos — mail, instagram, steam, linkedin y github"/>
 </p>
 
 <p align="center">
   <a href="https://github.com/daviddans"><img src="https://img.shields.io/badge/-github-1A1B26?style=flat-square&logo=github&logoColor=CBA6F7" alt="github"/></a>
   <a href="mailto:dans.villares@gmail.com"><img src="https://img.shields.io/badge/-mail-F38BA8?style=flat-square&logo=gmail&logoColor=white" alt="mail"/></a>
   <a href="https://linkedin.com/in/daviddans"><img src="https://img.shields.io/badge/-linkedin-7AA2F7?style=flat-square&logo=linkedin&logoColor=white" alt="linkedin"/></a>
-  <a href="https://steamcommunity.com/id/{{TU_STEAM}}"><img src="https://img.shields.io/badge/-steam-1A1B26?style=flat-square&logo=steam&logoColor=white" alt="steam"/></a>
-  <a href="https://instagram.com/{{TU_INSTAGRAM}}"><img src="https://img.shields.io/badge/-instagram-F5BDE6?style=flat-square&logo=instagram&logoColor=white" alt="instagram"/></a>
+  <a href="https://steamcommunity.com/id/Daviddans"><img src="https://img.shields.io/badge/-steam-1A1B26?style=flat-square&logo=steam&logoColor=white" alt="steam"/></a>
+  <a href="https://instagram.com/daviddans"><img src="https://img.shields.io/badge/-instagram-F5BDE6?style=flat-square&logo=instagram&logoColor=white" alt="instagram"/></a>
 </p>
 
 <!-- ═══════════════ EOF ═══════════════ -->

@@ -2,17 +2,16 @@
 """
 Genera assets/nmap.svg — la sección de contacto del final del perfil.
 
-No es un SSH: es un `nmap -sV` a daviddans, donde cada "puerto abierto"
-es una de tus cosas (los puertos reales de cada servicio, para que el
-chiste se entienda: 8006 es Proxmox, 9100 una impresora, 51820 WireGuard…).
+No es un SSH: es un `nmap -sV` a daviddans con 5 puertos abiertos,
+one por cada red social. Los puertos son INVENTADOS a propósito (200, 404,
+418, 451, 1337); el chiste está en el número y en la columna SERVICE.
 
 Se escribe una sola vez (loop=False) y el cursor se queda parpadeando
 para siempre al final, en el prompt: es lo último del perfil y si te
 quedas a medio bajar no quieres perderte la lista.
 
-OJO: el correo, el Steam y el Instagram están también en el README (en
-las badges, que sí son clicables; un SVG no lo es). Si los cambias,
-cámbialos en los dos sitios y vuelve a ejecutar este script.
+Los mismos enlaces están en las badges del README, que sí son clicables
+(un SVG no lo es). Si cambias alguno, cámbialo en los dos sitios.
 """
 import pathlib
 import sys
@@ -26,8 +25,8 @@ MONO = "ui-monospace,Menlo,Consolas,monospace"
 # ── ritmo ─────────────────────────────────────────────────────────────────
 DT = 0.014        # s por carácter (sale rápido: son muchas líneas)
 PAUSA = 0.16      # descanso entre líneas
-TAM = 15
-LSTEP = 23
+TAM = 17
+LSTEP = 25
 MARGEN = 24
 
 # ── paleta ───────────────────────────────────────────────────────────────
@@ -36,30 +35,27 @@ SRV, DEST, DIM = "#7DCFFF", "#E6E9FF", "#565F89"
 USER, HOST, SIGN = "#BB9AF7", "#7AA2F7", "#9ECE6A"
 
 # ── el escaneo ───────────────────────────────────────────────────────────
-# (puerto, servicio, versión, destino)
+# 5 puertos INVENTADOS (a propósito: no son los reales de ningún servicio),
+# uno por cada red social. El chiste está en el número y en la columna
+# SERVICE: 200 = OK, 404 = not found, 418 = I'm a teapot,
+# 451 = unavailable for legal reasons, 1337 = leet.
+# Ordenados por puerto, como los ordena nmap de verdad.
+# (puerto, servicio, destino)
 PUERTOS = [
-    ("22/tcp",     "ssh",       "OpenSSH 9.6p1",  "github.com/daviddans"),
-    ("80/tcp",     "http",      "nginx 1.26.0",   "daviddans.dev"),
-    ("443/tcp",    "ssl/http",  "Instagram",      "@{{TU_INSTAGRAM}}"),
-    ("993/tcp",    "imaps",     "dovecot 2.3.19", "dans.villares@gmail.com"),
-    ("1883/tcp",   "mqtt",      "mosquitto 2.0.18", "home assistant"),
-    ("2376/tcp",   "docker",    "27.3.1",         "homelab · dockerd"),
-    ("3000/tcp",   "http",      "Grafana 11.3.0", "dashboards"),
-    ("3478/udp",   "stun",      "steam",          "{{TU_STEAM}}"),
-    ("8006/tcp",   "proxmox",   "PVE 8.2.4",       "proxmox.home"),
-    ("8443/tcp",   "ssl/http",  "LinkedIn",       "in/daviddans"),
-    ("9100/tcp",   "printer",   "OctoPrint 1.9.3", "mi impresora 3D"),
-    ("27015/tcp",  "steam",     "Steam 3",        "{{TU_STEAM}}"),
-    ("51820/udp",  "wireguard", "wg0",            "tailnet"),
+    ("200/tcp",  "smtp",      "dans.villares@gmail.com"),
+    ("404/tcp",  "instagram", "instagram.com/daviddans"),
+    ("418/tcp",  "teapot",    "steamcommunity.com/id/Daviddans"),
+    ("451/tcp",  "legal",     "linkedin.com/in/daviddans"),
+    ("1337/tcp", "github",    "github.com/daviddans"),
 ]
 
-CABECERA = ("PORT", "STATE", "SERVICE", "VERSIÓN", "DESTINO")
-COLORES = (TXT, OK, SRV, TXT, DEST)     # color de cada columna
+CABECERA = ("PORT", "STATE", "SERVICE", "DESTINO")
+COLORES = (TXT, OK, SRV, DEST)            # color de cada columna
 
 
 def celdas(p):
-    """(puerto, servicio, versión, destino) → las 5 columnas de la fila."""
-    return [p[0], "open", p[1], p[2], p[3]]
+    """(puerto, servicio, destino) → las 4 columnas de la fila."""
+    return [p[0], "open", p[1], p[2]]
 
 
 def columnas():
@@ -85,7 +81,7 @@ def lineas():
         [("Starting Nmap 7.95 ( https://nmap.org )", SUB)],
         [("Nmap scan report for ", SUB), ("daviddans", TXT)],
         [("Host is up ", OK), ("(0.041s latency).", SUB)],
-        [("Not shown: ", SUB), ("977 closed ports", DIM)],
+        [("Not shown: ", SUB), ("995 closed ports", DIM)],
         [],
         fila(list(CABECERA), (SUB,) * len(CABECERA)),
     ]
@@ -139,7 +135,7 @@ def main():
 
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" fill="none">
   <!-- nmap de contacto · generado por tools/generar_nmap.py -->
-  <desc>nmap v1 · escribe una vez y el cursor parpadea · {len(PUERTOS)} puertos abiertos: github, mail, linkedin, steam, instagram, homelab, proxmox y la impresora 3D</desc>
+  <desc>nmap v2 · escribe una vez y el cursor parpadea · {len(PUERTOS)} puertos: mail, instagram, steam, linkedin y github</desc>
   <defs>
     <linearGradient id="borde" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#9ECE6A"/><stop offset=".5" stop-color="#F9E2AF"/>
