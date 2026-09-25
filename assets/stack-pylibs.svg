@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="856" height="256" viewBox="0 0 856 256" fill="none">
+<!-- stack-pylibs · iconos: skill-icons (tandpfun, MIT) + tiles propios -->
+  <g transform="translate(0,0)">
+    <rect width="256" height="256" rx="60" fill="#242938"/>
+    <g transform="translate(48,48) scale(6.66667)"><path d="M10.315 4.876L6.3048 2.8517l-4.401 2.1965 4.1186 2.0683zm1.8381.9277l4.2045 2.1223-4.3622 2.1906-4.125-2.0718zm5.6153-2.9213l4.3193 2.1658-3.863 1.9402-4.2131-2.1252zm-1.859-.9329L12.021 0 8.1742 1.9193l4.0068 2.0208zm-3.0401 16.7443V24l4.7107-2.3507-.0053-5.3085zm4.7037-4.2057l-.0052-5.2528-4.6985 2.3356v5.2546zm5.6553-.9845v5.327l-4.0178 2.0052-.0029-5.3028zm0-1.8626V6.4214l-4.0253 2.001.0034 5.2633zM11.2062 11.571L8.0333 9.9756v6.895s-3.8804-8.2564-4.2399-8.998c-.0463-.0957-.2371-.2007-.2858-.2262C2.8118 7.2812.773 6.2485.773 6.2485V18.43l2.8204 1.5076v-6.3674s3.8392 7.3775 3.878 7.458c.0389.0807.4245.8582.8362 1.1314.5485.363 2.8992 1.7766 2.8992 1.7766z" fill="#FFFFFF"/></g>
+  </g>
+  <g transform="translate(300,0)">
+    <rect width="256" height="256" rx="60" fill="#242938"/>
+    <path d="M56 64 V200 H200" stroke="#F9E2AF" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <path d="M84 182 L114 138 L146 166 L178 92" stroke="#F38BA8" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="84" cy="182" r="10" fill="#7DCFFF"/><circle cx="114" cy="138" r="10" fill="#7DCFFF"/><circle cx="146" cy="166" r="10" fill="#7DCFFF"/><circle cx="178" cy="92" r="10" fill="#7DCFFF"/>
+  </g>
+  <g transform="translate(600,0)">
+    <rect width="256" height="256" rx="60" fill="#242938"/><rect x="96" y="176" width="16" height="16" fill="#6DC24B"/><rect x="112" y="176" width="16" height="16" fill="#6DC24B"/><rect x="128" y="176" width="16" height="16" fill="#6DC24B"/><rect x="144" y="176" width="16" height="16" fill="#6DC24B"/><rect x="160" y="176" width="16" height="16" fill="#6DC24B"/><rect x="160" y="160" width="16" height="16" fill="#6DC24B"/><rect x="160" y="144" width="16" height="16" fill="#6DC24B"/><rect x="160" y="128" width="16" height="16" fill="#6DC24B"/><rect x="144" y="128" width="16" height="16" fill="#6DC24B"/><rect x="128" y="128" width="16" height="16" fill="#6DC24B"/><rect x="112" y="128" width="16" height="16" fill="#6DC24B"/><rect x="96" y="128" width="16" height="16" fill="#6DC24B"/><rect x="80" y="128" width="16" height="16" fill="#6DC24B"/><rect x="80" y="112" width="16" height="16" fill="#6DC24B"/><rect x="80" y="96" width="16" height="16" fill="#6DC24B"/><rect x="96" y="96" width="16" height="16" fill="#6DC24B"/><rect x="112" y="96" width="16" height="16" fill="#6DC24B"/><rect x="128" y="96" width="16" height="16" fill="#6DC24B"/><rect x="144" y="96" width="16" height="16" fill="#6DC24B"/>
+    <rect x="148" y="100" width="8" height="8" fill="#FFFFFF"/>
+    <rect x="160" y="88" width="8" height="8" fill="#F38BA8"/>
+  </g>
+</svg>

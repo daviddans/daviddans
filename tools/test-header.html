@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/>
+<title>test header</title>
+<style>
+  body { background:#242938; margin:0; padding:20px; font-family:monospace; color:#eee; }
+  h2 { font-size:13px; color:#9aa; margin:14px 0 6px; }
+  .box { background:#1A1B26; border-radius:8px; overflow:hidden; }
+  svg { display:block; width:1000px; height:200px; }
+</style></head>
+<body>
+<h2>t = 0.4s (tecleando «$ who…»)</h2><div class="box" id="a"></div>
+<h2>t = 2.2s (línea 1 completa, en pausa)</h2><div class="box" id="b"></div>
+<h2>t = 5.0s (línea 2: «software developer…»)</h2><div class="box" id="c"></div>
+<h2>t = 8.0s (línea 3: «CS degree…»)</h2><div class="box" id="d"></div>
+<h2>t = 12.5s (línea 4: «free &amp; open…»)</h2><div class="box" id="e"></div>
+<h2>t = 15.5s (línea 5: «i use arch, btw»)</h2><div class="box" id="f"></div>
+<script>
+const svg = await (await fetch('/assets/header.svg')).text();
+for (const [id, t] of [['a',0.4],['b',2.2],['c',5.0],['d',8.0],['e',12.5],['f',15.5]]) {
+  document.getElementById(id).innerHTML = svg;
+  const el = document.querySelector('#'+id+' svg');
+  el.pauseAnimations();
+  el.setCurrentTime(t);
+}
+</script>
+</body></html>

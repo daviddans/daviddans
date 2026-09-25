@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/>
+<title>test panel</title>
+<style>
+  body { background:#0d1117; margin:0; padding:16px; font-family:monospace; color:#8b949e; }
+  h3 { font-size:12px; margin:12px 0 4px; color:#58a6ff; }
+  .box { background:#1A1B26; border-radius:8px; overflow:hidden; display:inline-block; }
+</style></head>
+<body>
+<h3>panel · t = 0s</h3><div class="box" id="p0"></div>
+<h3>panel · t = 4s (fastfetch escribiendo)</h3><div class="box" id="p4"></div>
+<h3>panel · t = 12s (todo escrito)</h3><div class="box" id="p12"></div>
+<h3>panel · t = 18s (pausa de 10s)</h3><div class="box" id="p18"></div>
+<h3>header · t = 3s</h3><div class="box" id="h3"></div>
+<script type="module">
+const p = await (await fetch('/assets/fastfetch.svg')).text();
+const h = await (await fetch('/assets/header.svg')).text();
+for (const [id, svg, t] of [['p0',p,0],['p4',p,4],['p12',p,12],['p18',p,18],['h3',h,3]]) {
+  document.getElementById(id).innerHTML = svg;
+  const el = document.querySelector('#'+id+' svg');
+  el.pauseAnimations();
+  el.setCurrentTime(t);
+}
+document.title = 'listo';
+</script>
+</body></html>

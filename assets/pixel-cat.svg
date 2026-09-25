@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="72" height="60" viewBox="0 0 72 60" shape-rendering="crispEdges">
+  <!-- 🐱 gato de terminal · azul con orejas rosas, parpadea y mueve el rabo -->
+  <g fill="#7AA2F7">
+    <rect x="6" y="0" width="12" height="6"/><rect x="24" y="0" width="12" height="6"/>
+    <rect x="0" y="6" width="42" height="18"/>
+    <rect x="6" y="24" width="30" height="30"/>
+    <rect x="36" y="30" width="6" height="18">
+      <animateTransform attributeName="transform" type="rotate" values="0 39 48; 18 39 48; 0 39 48" dur="1s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+  <rect x="9" y="3" width="6" height="3" fill="#F5BDE6"/>
+  <rect x="27" y="3" width="6" height="3" fill="#F5BDE6"/>
+  <g fill="#1A1B26">
+    <rect x="9" y="12" width="6" height="6"/>
+    <rect x="27" y="12" width="6" height="6"/>
+    <animate attributeName="opacity" values="1;1;0;1" keyTimes="0;.9;.94;1" dur="4.5s" repeatCount="indefinite"/>
+  </g>
+  <rect x="18" y="21" width="6" height="3" fill="#F38BA8"/>
+</svg>

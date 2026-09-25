@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="72" height="54" viewBox="0 0 72 54" shape-rendering="crispEdges">
+<g fill="#F38BA8">
+<!-- ♥ corazón pixel · rojo pastel (mi color favorito) -->
+<rect x="9" y="0" width="9" height="9"/><rect x="18" y="0" width="9" height="9"/><rect x="45" y="0" width="9" height="9"/><rect x="54" y="0" width="9" height="9"/><rect x="0" y="9" width="9" height="9"/><rect x="9" y="9" width="9" height="9"/><rect x="18" y="9" width="9" height="9"/><rect x="27" y="9" width="9" height="9"/><rect x="45" y="9" width="9" height="9"/><rect x="54" y="9" width="9" height="9"/><rect x="63" y="9" width="9" height="9"/><rect x="0" y="18" width="9" height="9"/><rect x="9" y="18" width="9" height="9"/><rect x="18" y="18" width="9" height="9"/><rect x="27" y="18" width="9" height="9"/><rect x="36" y="18" width="9" height="9"/><rect x="45" y="18" width="9" height="9"/><rect x="54" y="18" width="9" height="9"/><rect x="9" y="27" width="9" height="9"/><rect x="18" y="27" width="9" height="9"/><rect x="27" y="27" width="9" height="9"/><rect x="36" y="27" width="9" height="9"/><rect x="45" y="27" width="9" height="9"/><rect x="54" y="27" width="9" height="9"/><rect x="18" y="36" width="9" height="9"/><rect x="27" y="36" width="9" height="9"/><rect x="36" y="36" width="9" height="9"/><rect x="45" y="36" width="9" height="9"/><rect x="27" y="45" width="9" height="9"/><rect x="36" y="45" width="9" height="9"/>
+</g>
+<g><animate attributeName="opacity" values="1;.25;1" dur=".7s" repeatCount="indefinite"/></g>
+</svg>

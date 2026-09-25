@@ -1,0 +1,8 @@
+# cachés de los generadores (se regeneran solas, no van al repo)
+tools/.cache-iconos/
+tools/.cache-api/
+__pycache__/
+*.pyc
+
+# páginas de prueba temporales que creo al verificar
+tools/_*.html
