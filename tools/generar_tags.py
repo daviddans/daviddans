@@ -63,7 +63,7 @@ SOFT = [
 
 ESCALA = 1.2      # las badges se agrandan con height="24" (shields usa 20)
 ALTO = 24
-COL = 255          # ancho máximo de una fila de tags en las sub-columnas
+COL = 272          # ancho máximo de una fila de tags en cada columna
 
 
 def ancho(it):
@@ -85,7 +85,12 @@ def badge(emoji, texto, color):
 
 
 def grupo(nombre, items, max_px, centrar=True):
-    """Etiqueta + tabla interna: todas las filas alineadas a la izquierda."""
+    """Etiqueta + filas de badges separadas con <br/>.
+
+    OJO: aquí NO se usa una tabla por grupo. GitHub dibuja un borde en
+    cada <td>, así que anidar tablas mete unas 40 cajitas alrededor de
+    cada badge; con <p> + <br/> solo queda el borde de las 3 columnas.
+    """
     filas, actual, usado = [], [], 0
     for it in items:
         w = ancho(it)
@@ -97,12 +102,9 @@ def grupo(nombre, items, max_px, centrar=True):
     if actual:
         filas.append(actual)
     align = "center" if centrar else "left"
-    html = [f'      <p align="center"><code>{nombre}</code></p>',
-            f'      <table border="0" align="{align}">']
-    for f in filas:
-        html.append("        <tr><td align=\"left\">" + " ".join(f) + "</td></tr>")
-    html.append("      </table>")
-    return "\n".join(html)
+    return (f'      <p align="{align}"><code>{nombre}</code><br/>'
+            + "<br/>\n".join(" ".join(f) for f in filas)
+            + "</p>")
 
 
 def bloque(inicio, fin, contenido):
@@ -142,18 +144,24 @@ def validar(todos):
 
 
 def main():
-    # · columna de la foto: dos sub-columnas con los cuatro grupos
-    colA = "\n".join([
+    # · los cuatro grupos en 3 columnas A TODO EL ANCHO, fuera de la tabla
+    #   del hero. Motivo: GitHub reparte el ancho de una tabla entre sus
+    #   celdas según lo que pide cada una, así que si los tags (que son
+    #   muchísimos) comparten tabla con el panel, al panel le llega la
+    #   mitad de ancho y a su celda le queda un rectángulo vacío debajo.
+    col1 = "\n".join([
         grupo("~/identidad", IDENTIDAD, COL, centrar=True),
         grupo("~/.soft-skills", SOFT, COL, centrar=True),
     ])
-    colB = "\n".join([
-        grupo("~/.hobbies/tech", TECH, COL, centrar=True),
-        grupo("~/.hobbies", OFFLINE, COL, centrar=True),
-    ])
-    hero = ('<table border="0" align="center">\n        <tr>\n'
-            f'          <td valign="top" align="left">\n{colA}\n          </td>\n'
-            f'          <td valign="top" align="left">\n{colB}\n          </td>\n'
+    col2 = grupo("~/.hobbies/tech", TECH, COL, centrar=True)
+    col3 = grupo("~/.hobbies", OFFLINE, COL, centrar=True)
+    hero = ('<table border="0" width="100%">\n        <tr>\n'
+            '          <td width="34%" valign="top" align="center">\n'
+            f'{col1}\n          </td>\n'
+            '          <td width="33%" valign="top" align="center">\n'
+            f'{col2}\n          </td>\n'
+            '          <td width="33%" valign="top" align="center">\n'
+            f'{col3}\n          </td>\n'
             '        </tr>\n      </table>')
 
     bloque("<!-- BEGIN TAGS:HERO -->", "<!-- END TAGS:HERO -->", hero)

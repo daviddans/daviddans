@@ -35,11 +35,12 @@ perfiles, y sin depender de servicios externos para la decoración.
 | Elemento | Qué hay |
 |:---|:---|
 | `assets/header.svg` | cabecera original: prompt + escena synthwave **+ el typing animado dentro** (SMIL, sin servicios externos) |
-| `$ fastfetch` + `cat ./about_me.md` | terminal en vivo con TU info + avatar, quote, todos los tags y sprites |
+| `$ fastfetch` + `cat ./about_me.md` | terminal en vivo con TU info (panel 47%) + avatar y quote (53%) |
+| etiquetas | tabla propia a todo el ancho: 29 tags en 3 columnas + fila de sprites |
 | `assets/divider-wave.svg` | **el único divisor** (onda + burbujas, estrecho y a todo el ancho) |
 | `$ tree ~/stack/ -L 2` | stack en strips de iconos uniformes, 13 carpetas |
 | `assets/divider-wave.svg` | el mismo divisor, otra vez |
-| `$ ssh guest@daviddans.dev` | contacto: `assets/ssh.svg` (sesión que se escribe sola) + badges clicables + el gato |
+| `$ ssh guest@daviddans.dev` | contacto: `assets/ssh.svg` (sesión que se escribe sola) + badges clicables |
 | `assets/footer.svg` | pie: `exit 0` + `logout` + `[ERROR] social_life: process not found` |
 
 El hilo narrativo es una sesión de terminal de principio a fin:
@@ -88,18 +89,29 @@ Los datos vivos de GitHub que daba el widget (uptime, followers…) siguen
 estando: **followers y stars** son badges dinámicas de shields en la
 sección de repos, y la racha es la de streak-stats.
 
-### Etiquetas bajo la foto
+### Las etiquetas (y por qué NO están junto a la foto)
 
-**Todo** va en la columna de la foto (55% derecho): foto, quote, cuatro
-grupos de tags repartidos en **dos sub-columnas** — izquierda
-`~/identidad` + `~/.soft-skills`, derecha `~/.hobbies/tech` +
-`~/.hobbies` — y la fila de sprites al final. La banda a todo el ancho se
-quitó porque las badges (a 24 px) se salían del ancho del README.
+Los 29 tags van en **su propia tabla a todo el ancho**, en **tres
+columnas**: `~/identidad` + `~/.soft-skills` | `~/.hobbies/tech` |
+`~/.hobbies`. Y la fila de sprites va debajo, centrada.
+
+> ⚠️ **Por qué están fuera de la tabla del hero** (esto costó una
+> subida): desde 2023 GitHub **dibuja un borde en cada `<td>`** y reparte
+> el ancho de la tabla según lo que **pide** cada celda. Con los tags
+> dentro de la celda de la foto, aquella celda pedía 590 px, el panel se
+> quedaba a 240 px (el texto, ilegible) y su celda se pintaba como un
+> **rectángulo vacío de 700 px** debajo del panel. Arriba del todo, la
+> tabla del hero solo lleva el panel y la foto, y los tags van en su
+> propia tabla: así cada celda pide lo que le corresponde y no queda
+> hueco. Mi preview local (`tools/test-hero.py`) reproduce a propósito
+> el CSS de GitHub (bordes + `display:block`) para que esto se viera sin
+> subirlo.
 
 Generado por `tools/generar_tags.py` (`IDENTIDAD`, `TECH`, `OFFLINE`,
-`SOFT`, y `COL` = ancho máximo de fila). Cada grupo se emite como una tabla
-interna con las filas alineadas a la izquierda (`<td align="left">`), así
-todos los tags de un grupo arrancan en la misma x.
+`SOFT`, y `COL` = ancho máximo de fila, 272 px). Cada grupo se emite como
+un `<p align="center">` con las filas separadas por `<br/>`, **no** como
+una tabla interna: anidar tablas metía unas 40 cajitas alrededor de cada
+badge, porque GitHub las bordea igual.
 
 **Dos reglas de shields.io que aprendimos a base de romper cosas:**
 
