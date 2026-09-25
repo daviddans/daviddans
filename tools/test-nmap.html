@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/>
+<title>test nmap</title>
+<style>
+  body { background:#0d1117; margin:0; padding:16px; font-family:monospace; color:#8b949e; }
+  h3 { font-size:12px; margin:12px 0 4px; color:#58a6ff; }
+  .box { background:#1A1B26; border-radius:12px; overflow:hidden; display:inline-block; }
+</style></head>
+<body>
+<h3>nmap · t = 0s</h3><div class="box" id="a"></div>
+<h3>nmap · t = 8s (escaneando)</h3><div class="box" id="b"></div>
+<h3>nmap · t = 30s (escrito, cursor parpadeando)</h3><div class="box" id="c"></div>
+<script type="module">
+const s = await (await fetch('/assets/nmap.svg')).text();
+for (const [id, t] of [['a',0],['b',8],['c',30]]) {
+  document.getElementById(id).innerHTML = s;
+  const el = document.querySelector('#'+id+' svg');
+  el.pauseAnimations();
+  el.setCurrentTime(t);
+}
+</script>
+</body></html>

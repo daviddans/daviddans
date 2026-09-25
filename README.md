@@ -1,8 +1,8 @@
 <!-- ══════════════════════════════════════════════════════════════════
   DAVIDDANS · perfil readme — "una sesión de terminal"
-  whoami → fastfetch → tree → ssh → exit 0
+  whoami → fastfetch → tree → nmap -sV daviddans → exit 0
   🎨 paleta "SynthNight Mocha" · 🌐 multi-plataforma · guía: COMO_USAR.md
-  ✏️ pendientes: placeholders del TFG y del contacto (ver COMO_USAR §5)
+  ✏️ pendientes: {{TU_STEAM}} y {{TU_INSTAGRAM}} del contacto (COMO_USAR §5)
  ══════════════════════════════════════════════════════════════════ -->
 
 <!-- ══ $ whoami ══ la cabecera (header.svg) lleva el prompt, la escena
@@ -12,24 +12,21 @@
 <!-- ═══════════════ $ fastfetch ═══════════════
      Panel propio (tools/generar_fastfetch.py): logo de Arch, tu info,
      tecleo animado y 10 s de pausa para leerlo.
-     OJO: aquí NO van los tags. GitHub reparte el ancho de una tabla
-     entre sus celdas según lo que pide cada una, y los 29 tags se
-     comían el panel y dejaban su celda vacía 700 px más abajo. -->
-<table border="0" width="100%">
-  <tr>
-    <td width="47%" valign="top" align="center">
-      <img src="./assets/fastfetch.svg" width="420" alt="fastfetch · sesión en vivo"/>
-    </td>
-    <td width="53%" valign="middle" align="center">
-      <img src="https://github.com/daviddans.png" width="280" alt="avatar"/><br/>
-      <code>~/avatar.png</code>
-      <p align="center">
-        <code>cat ~/.quote</code><br/>
-        <i>"Ingeniero en potencia, desgraciado en acto."</i>
-      </p>
-    </td>
-  </tr>
-</table>
+
+     Es un <picture> porque el markdown de GitHub no puede reordenar la
+     maquetación (no hay CSS ni media queries), pero SÍ deja cambiar la
+     imagen según el ancho: en pantallas estrechas sale la versión
+     estrecha (420×452, una columna) y en anchas la versión ancha
+     (780×323, con el about_me.md en segunda columna), que ocupa el hueco
+     que antes era tu foto. -->
+<p align="center">
+  <picture>
+    <source media="(max-width: 700px)" srcset="./assets/fastfetch.svg">
+    <img src="./assets/fastfetch-wide.svg" width="100%" alt="fastfetch · sesión en vivo"/>
+  </picture>
+</p>
+
+<p align="center"><i>"Ingeniero en potencia, desgraciado en acto."</i></p>
 <!-- BEGIN TAGS:HERO -->
 <table border="0" width="100%">
         <tr>
@@ -119,17 +116,22 @@
 
 <p align="center"><img src="./assets/divider-wave.svg" width="100%" alt="···"/></p>
 
-<!-- ═══════════════ $ ssh guest@daviddans ═══════════════ -->
-<p align="center"><code>daviddans@arch:~$ ssh guest@daviddans.dev</code></p>
+<!-- ═══════════════ $ nmap -sV daviddans ═══════════════
+     El contacto es un escaneo de puertos: cada puerto abierto es una de
+     tus cosas, con el puerto real de cada servicio (8006 Proxmox, 9100 la
+     impresora, 51820 WireGuard…). Se genera con tools/generar_nmap.py. -->
+`daviddans@arch:~$ nmap -sV -T4 daviddans`
 
 <p align="center">
-  <img src="./assets/ssh.svg" width="360" height="354" alt="sesión de contacto: docs, mail y linkedin, con el cursor parpadeando"/>
+  <img src="./assets/nmap.svg" width="696" height="580" alt="nmap: 13 puertos abiertos — github, mail, linkedin, steam, instagram, homelab, proxmox y la impresora 3D"/>
 </p>
 
 <p align="center">
   <a href="https://github.com/daviddans"><img src="https://img.shields.io/badge/-github-1A1B26?style=flat-square&logo=github&logoColor=CBA6F7" alt="github"/></a>
   <a href="mailto:dans.villares@gmail.com"><img src="https://img.shields.io/badge/-mail-F38BA8?style=flat-square&logo=gmail&logoColor=white" alt="mail"/></a>
   <a href="https://linkedin.com/in/daviddans"><img src="https://img.shields.io/badge/-linkedin-7AA2F7?style=flat-square&logo=linkedin&logoColor=white" alt="linkedin"/></a>
+  <a href="https://steamcommunity.com/id/{{TU_STEAM}}"><img src="https://img.shields.io/badge/-steam-1A1B26?style=flat-square&logo=steam&logoColor=white" alt="steam"/></a>
+  <a href="https://instagram.com/{{TU_INSTAGRAM}}"><img src="https://img.shields.io/badge/-instagram-F5BDE6?style=flat-square&logo=instagram&logoColor=white" alt="instagram"/></a>
 </p>
 
 <!-- ═══════════════ EOF ═══════════════ -->

@@ -4,7 +4,7 @@ README de perfil con estética **terminal pura**: toda la página se lee como
 **una sola sesión de shell** y cada sección es un comando:
 
 ```
-fastfetch → tree ~/stack → git log && systemctl → ssh → exit 0
+fastfetch → tree ~/stack → nmap -sV daviddans → exit 0
 ```
 
 Todo el arte (cabecera, pie, divisores, sprites, tiles de iconos) son
@@ -35,16 +35,16 @@ perfiles, y sin depender de servicios externos para la decoración.
 | Elemento | Qué hay |
 |:---|:---|
 | `assets/header.svg` | cabecera original: prompt + escena synthwave **+ el typing animado dentro** (SMIL, sin servicios externos) |
-| `$ fastfetch` + `cat ./about_me.md` | terminal en vivo con TU info (panel 47%) + avatar y quote (53%) |
+| `$ fastfetch` + `cat ./about_me.md` | el panel, a todo el ancho y **reactivo** (estrecho en móvil / ancho en escritorio) |
 | etiquetas | tabla propia a todo el ancho: 29 tags en 3 columnas + fila de sprites |
 | `assets/divider-wave.svg` | **el único divisor** (onda + burbujas, estrecho y a todo el ancho) |
 | `$ tree ~/stack/ -L 2` | stack en strips de iconos uniformes, 13 carpetas |
 | `assets/divider-wave.svg` | el mismo divisor, otra vez |
-| `$ ssh guest@daviddans.dev` | contacto: `assets/ssh.svg` (sesión que se escribe sola) + badges clicables |
+| `$ nmap -sV -T4 daviddans` | contacto: `assets/nmap.svg` (13 puertos abiertos = tus cosas) + badges clicables |
 | `assets/footer.svg` | pie: `exit 0` + `logout` + `[ERROR] social_life: process not found` |
 
 El hilo narrativo es una sesión de terminal de principio a fin:
-**`whoami` → `fastfetch` → `tree` → `ssh` → `exit 0`**. Por eso el pie
+**`whoami` → `fastfetch` → `tree` → `nmap` → `exit 0`**. Por eso el pie
 vuelve a cerrar con el mismo prompt que la cabecera.
 
 Separador **único**: la onda (`divider-wave.svg`), repetida en los dos
@@ -53,7 +53,8 @@ cortes que quedan. Es estrecho (viewBox 900×56) pero va con
 
 ## 📺 3 · El panel "fastfetch" (hero)
 
-**Ya no es un widget externo**: es `assets/fastfetch.svg`, generado por
+**Ya no es un widget externo**: es `assets/fastfetch.svg` +
+`assets/fastfetch-wide.svg`, generados por
 `tools/generar_fastfetch.py`. ¿Por qué? Porque el widget
 (github-stats-terminal-style) no permite logo propio ni pausas: su
 `neofetch` lleva el logo de GitHub fijo en el código y no existe comando
@@ -72,7 +73,7 @@ cortes que quedan. Es estrecho (viewBox 900×56) pero va con
 | pausas del guion | cada línea del plan lleva su `gap` y su `pausa` (descanso entre bloques) |
 | `PAUSA` | segundos de lectura al final, antes de reiniciar (10) |
 | `CUENTA` | fecha de creación de la cuenta → calcula el `uptime` |
-| `W, H, TAM` y las coordenadas | tamaño, fuente y colocación de cada bloque |
+| `VARIANTES` | geometría de cada versión: `estrecha` (420×452, una columna) y `ancha` (780×323, `AX` = columna del `about_me.md`) |
 
 El guion de la sesión es: **`fastfetch` → `cat ./about_me.md` → `uptime`
 → `exit`**, y al final se queda 10 s quieto para poder leerlo.
@@ -88,6 +89,25 @@ python3 tools/generar_fastfetch.py
 Los datos vivos de GitHub que daba el widget (uptime, followers…) siguen
 estando: **followers y stars** son badges dinámicas de shields en la
 sección de repos, y la racha es la de streak-stats.
+
+### El panel es "reactivo" (con las limitaciones del markdown)
+
+No hay foto: el panel ocupa todo el ancho. Y como en el README **no hay
+CSS**, la única cosa "reactiva" posible es **cambiar de imagen según el
+ancho**, que se hace con `<picture>`:
+
+```html
+<picture>
+  <source media="(max-width: 700px)" srcset="./assets/fastfetch.svg">   <!-- móvil -->
+  <img src="./assets/fastfetch-wide.svg" width="100%">                  <!-- escritorio -->
+</picture>
+```
+
+O sea: **sí** se puede adaptar la imagen al ancho (y por eso hay dos
+versiones del panel, con el mismo guion y la misma animación), pero **no**
+se puede reordenar la maquetación: si quisieras esconder *una celda* en
+móvil y sacar *otra* en escritorio, eso no se puede. Por eso el avatar se
+fue en lugar de esconderse.
 
 ### Las etiquetas (y por qué NO están junto a la foto)
 
@@ -200,13 +220,16 @@ counterstrike, dota2, epicgames, playstation, steamdeck, itchdotio.
 
 | Placeholder | Dónde | Qué poner |
 |:---|:---|:---|
-| `{{TU_EMAIL}}` | `README.md` (badge) **y** `tools/generar_ssh.py` | Tu email |
-| `{{TU_LINKEDIN}}` | `README.md` (badge) **y** `tools/generar_ssh.py` | Tu slug de LinkedIn |
+| `{{TU_STEAM}}` | `README.md` (badge) **y** `tools/generar_nmap.py` | Tu id de Steam (sale 2 veces en el SVG) |
+| `{{TU_INSTAGRAM}}` | `README.md` (badge) **y** `tools/generar_nmap.py` | Tu @ de Instagram |
 
-> ⚠️ El correo y el LinkedIn están **dos veces**: en las badges del README
-> (que son clicables) y dentro del SVG del ssh (que es una imagen y no se
-> puede pulsar). Cambia los dos sitios y vuelve a lanzar
-> `python3 tools/generar_ssh.py`.
+Ya rellenados (verificados en tu propio perfil de GitHub): el correo
+`dans.villares@gmail.com` y el LinkedIn `in/daviddans`.
+
+> ⚠️ Cada red está **dos veces**: en las badges del README (que son
+> clicables) y dentro del SVG del nmap (que es una imagen y no se puede
+> pulsar). Cambia los dos sitios y vuelve a lanzar
+> `python3 tools/generar_nmap.py`.
 
 Ya son tuyos: avatar (github.com/daviddans.png), quote, fastfetch/about_me
 con tu info, el stack de 13 carpetas, las 29 etiquetas (identidad +
@@ -225,7 +248,7 @@ el sitio natural es `tools/generar_fastfetch.py` (`ABOUT`) o una fila del
 - Lo único que sale de un servicio externo son las **badges de
   shields.io** (las 29 del hero y las 3 de contacto). Shields se ve igual
   en GitLab, Codeberg o donde sea: son imágenes normales.
-- Todo lo demás (`header`, `fastfetch`, `stack-*`, `ssh`, `footer`) son
+- Todo lo demás (`header`, `fastfetch`, `stack-*`, `nmap`, `footer`) son
   **archivos del repo**: sin SMIL se ven estáticos pero completos, y sin
   conexión se ven igual. Eso incluye las animaciones: si un visor no las
   soporta, el texto aparece entero en vez de amontonado.
@@ -239,7 +262,8 @@ el sitio natural es `tools/generar_fastfetch.py` (`ABOUT`) o una fila del
 | `divider-wave.svg` | **el único separador** (onda doble + burbujas, 900×56) | morph del trazo, burbujas subiendo |
 | `pixel-cat.svg` `pixel-chip.svg` `pixel-coffee.svg` `pixel-floppy.svg` `pixel-heart.svg` `pixel-star.svg` `pixel-coin.svg` `pixel-ghost.svg` | sprites pixel | rabo del gato, parpadeo, vapor, etiquetas, latido, titileo, flotado |
 | `stack-*.svg` | strips de iconos (ver sección 4) | — (estáticos) |
-| `ssh.svg` | la sesión de contacto del final | tecleo una vez y el cursor se queda parpadeando |
+| `nmap.svg` | el escaneo de puertos del final | tecleo una vez y el cursor se queda parpadeando |
+| `fastfetch-wide.svg` | la versión ancha del panel del hero (escritorio) | igual que la estrecha, con el `about_me.md` en 2ª columna |
 
 Para retocar: son `<rect>`/`<path>` con `<animate>`; cambia `fill` o `dur`.
 **Excepción**: el typing de la cabecera NO se edita a mano (son 110 `<tspan>`
@@ -266,8 +290,8 @@ con su `<animate>`), se cambia en el generador (§10).
 
 1. Crea un repo público llamado **daviddans** (tu username exacto).
 2. Copia `README.md`, `assets/` y `tools/`, haz push.
-3. Rellena los dos placeholders del contacto (§5) y regenera el ssh:
-   `python3 tools/generar_ssh.py`.
+3. Rellena los dos placeholders del contacto (§5) y regenera el nmap:
+   `python3 tools/generar_nmap.py`.
 4. Listo. No hay ningún Action que lanzar ni ningún secreto que crear:
    **todo el perfil es estático**.
 
@@ -279,25 +303,25 @@ complicados a partir de listas legibles:
 | Script | Qué genera | Se edita |
 |:---|:---|:---|
 | `tools/generar_header.py` | `assets/header.svg` (prompt + escena + **typing que se borra**) | `PROMPT`, `LINEAS` (texto+color), `DT`/`PAUSA`/`DT_DEL`/`GAP`, `TYPE_FONT` |
-| `tools/svg_typing.py` | motor de tecleo **compartido** por cabecera, panel y ssh | — |
+| `tools/svg_typing.py` | motor de tecleo **compartido** por cabecera, panel y nmap | — |
 | `tools/generar_fastfetch.py` | `assets/fastfetch.svg` (panel del hero con logo Arch + pausa) | `FASTFETCH`, `ABOUT`, `CUENTA` (fecha de la cuenta para el `uptime`), `DT_TEXTO`/`DT_PROMPT`, `PAUSA`, geometría |
-| `tools/generar_ssh.py` | `assets/ssh.svg` (la sesión de contacto) | `GUION` (líneas, color y placeholders), `DT`, `PAUSA`, `TAM` |
+| `tools/generar_nmap.py` | `assets/nmap.svg` (el nmap de contacto) | `PUERTOS` (la lista de puertos abiertos), `DT`, `PAUSA`, `TAM`, `LSTEP` |
 | `tools/generar_tags.py` | las 29 etiquetas del hero (HTML entre `BEGIN/END TAGS`) | `IDENTIDAD`, `TECH`, `OFFLINE`, `SOFT` |
 | `tools/generar_strips.py` | los 13 `assets/stack-*.svg` | `STRIPS` (qué iconos va en cada carpeta) |
 | `tools/preview.py` | `/tmp/opencode/preview/index.html` (assets inlineados) | — |
 | `tools/test-hero.py` | `tools/test-hero.html`: hero con CSS estilo GitHub, sin marked.js | — |
-| `tools/test-panel.html` · `test-header.html` · `test-ssh.html` | fotogramas congelados (`pauseAnimations` + `setCurrentTime`) | — |
+| `tools/test-panel.html` · `test-header.html` · `test-nmap.html` | fotogramas congelados (`pauseAnimations` + `setCurrentTime`) | — |
 
 ```bash
 python3 tools/generar_header.py    # ~instantáneo
 python3 tools/generar_fastfetch.py # panel del hero (~1 s)
-python3 tools/generar_ssh.py       # sesión de contacto (~1 s)
+python3 tools/generar_nmap.py       # el nmap de contacto (~1 s)
 python3 tools/generar_strips.py    # necesita red la 1ª vez (descarga logos)
 python3 tools/preview.py           # render local del README
 
 # para ver las animaciones fotograma a fotograma:
 python3 -m http.server 8765        # y abre /tools/test-header.html
-#                                    # o /tools/test-ssh.html
+#                                    # o /tools/test-nmap.html
 ```
 
 Notas:
@@ -323,12 +347,12 @@ Notas:
   - los `<tspan>` llevan `opacity="0"` como estado base: si un visor **no**
     soporta SMIL, el typing no se ve en lugar de verse todo amontonado.
 - `Terminal(ciclo, loop=False)` = escribe **una vez** y se congela
-  (`fill="freeze"`): es lo que usa `generar_ssh.py`, porque es la última
+  (`fill="freeze"`): es lo que usa `generar_nmap.py`, porque es la última
   cosa del perfil y si te quedas a medio bajar no quieres perderte el
-  texto. El cursor del ssh añade encima un parpadeo infinito que empieza
+  texto. El cursor del nmap añade encima un parpadeo infinito que empieza
   al terminar la escritura. Con `loop=True` (por defecto, cabecera y
   panel) hace lo de siempre: ciclo infinito.
-- El **panel del hero** y la **sesión ssh** van un paso más allá: llevan
+- El **panel del hero** y el **nmap** van un paso más allá: llevan
   una **capa estática** (el texto plano, completo) que SMIL oculta. Así,
   si algo rasteriza el SVG sin animaciones, se ve el bloque entero en vez
   de un rect vacío.
@@ -339,6 +363,6 @@ Notas:
 ## 🙏 Créditos
 
 badges (shields.io) · logos (simple-icons) · tiles de skill-icons
-(tandpfun, MIT). Cabecera, panel del hero, sesión ssh, pie, divisores,
+(tandpfun, MIT). Cabecera, panel del hero, nmap, pie, divisores,
 sprites y tiles dibujados: hechos para esta plantilla, sin depender de
 nadie.

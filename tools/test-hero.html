@@ -26,24 +26,21 @@
 <!-- ═══════════════ $ fastfetch ═══════════════
      Panel propio (tools/generar_fastfetch.py): logo de Arch, tu info,
      tecleo animado y 10 s de pausa para leerlo.
-     OJO: aquí NO van los tags. GitHub reparte el ancho de una tabla
-     entre sus celdas según lo que pide cada una, y los 29 tags se
-     comían el panel y dejaban su celda vacía 700 px más abajo. -->
-<table border="0" width="100%">
-  <tr>
-    <td width="47%" valign="top" align="center">
-      <img src="/assets/fastfetch.svg" width="420" alt="fastfetch · sesión en vivo"/>
-    </td>
-    <td width="53%" valign="middle" align="center">
-      <img src="https://github.com/daviddans.png" width="280" alt="avatar"/><br/>
-      <code>~/avatar.png</code>
-      <p align="center">
-        <code>cat ~/.quote</code><br/>
-        <i>"Ingeniero en potencia, desgraciado en acto."</i>
-      </p>
-    </td>
-  </tr>
-</table>
+
+     Es un <picture> porque el markdown de GitHub no puede reordenar la
+     maquetación (no hay CSS ni media queries), pero SÍ deja cambiar la
+     imagen según el ancho: en pantallas estrechas sale la versión
+     estrecha (420×452, una columna) y en anchas la versión ancha
+     (780×323, con el about_me.md en segunda columna), que ocupa el hueco
+     que antes era tu foto. -->
+<p align="center">
+  <picture>
+    <source media="(max-width: 700px)" srcset="./assets/fastfetch.svg">
+    <img src="/assets/fastfetch-wide.svg" width="100%" alt="fastfetch · sesión en vivo"/>
+  </picture>
+</p>
+
+<p align="center"><i>"Ingeniero en potencia, desgraciado en acto."</i></p>
 <!-- BEGIN TAGS:HERO -->
 <table border="0" width="100%">
         <tr>
